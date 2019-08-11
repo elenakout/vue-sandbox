@@ -1,13 +1,27 @@
 <template>
-  <HelloWorld />
+  <div>
+    <v-container>
+      <h1 class="test">home</h1>
+    <sign-in />
+    </v-container>
+
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld.vue';
+import SignIn from '@/components/home/SignIn.vue';
 
 export default {
   components: {
-    HelloWorld,
+    SignIn,
+
   },
 };
 </script>
+
+<style lang="scss">
+.test {
+  color: $primary;
+}
+</style>
