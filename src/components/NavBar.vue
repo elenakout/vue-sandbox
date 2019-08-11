@@ -48,6 +48,7 @@
                     v-for="(item, index) in drawerItems"
                     :key="index" router
                     :to="item.route"
+
                     >
                         <v-list-item-icon>
                             <v-icon v-text="item.icon"></v-icon>

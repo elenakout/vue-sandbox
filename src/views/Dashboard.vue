@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <h1 class="test">home</h1>
+      <h1 class="test display-4">home</h1>
     <sign-in />
     </v-container>
 
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import SignIn from '@/components/home/SignIn.vue';
+import SignIn from '@/components/dashboard/SignIn.vue';
 
 export default {
   components: {
