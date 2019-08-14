@@ -22,6 +22,7 @@
                         >
                         <v-toolbar-title>SignUp form</v-toolbar-title>
 
+
                         </v-toolbar>
                         <v-card-text>
                             <v-form
@@ -93,32 +94,49 @@
                     </v-card>
                 </v-col>
             </v-row>
+            <v-snackbar
+                v-model="snackbar"
+              >
+                {{ feedback }}
+                <v-btn
+                  color="pink"
+                  text
+                  @click="snackbar = false"
+                >
+                  Close
+                </v-btn>
+    </v-snackbar>
         </v-container>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import slugify from 'slugify';
+import db from '@/firebase/init';
 
 
 export default {
   name: 'signup',
   data: () => ({
     valid: true,
+    feedback: '',
+    snackbar: false,
 
     slug: null,
     username: '',
+    email: '',
+    password: '',
+    rePassword: '',
+
     nameRules: [
       v => !!v || 'Username is required',
       v => (v && v.length <= 10) || 'Name must be less than 10 characters',
     ],
-    email: '',
     emailRules: [
       v => !!v || 'E-mail is required',
       v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
     ],
-    password: '',
-    rePassword: '',
     passwordRules: {
       required: v => !!v || 'Password is required',
       min: v => v.length >= 6 || 'Min 6 characters',
@@ -142,7 +160,29 @@ export default {
     ...mapActions(['signUserUp']),
     onSubmit() {
       if (this.username !== '' && this.email !== '' && this.password !== '' && this.rePassword !== '') {
-        console.log('submit');
+        this.slug = slugify(this.username, {
+          replacement: '-',
+          remove: /[$_*+~.()'"!\-:@]/g,
+          lower: true,
+        });
+
+        const ref = db.collection('users').doc(this.slug);
+
+        ref.get().then((doc) => {
+          if (doc.exists) {
+            this.feedback = 'This username already exists';
+            this.snackbar = true;
+          } else {
+            const userData = {
+              slug: this.slug,
+              email: this.email,
+              username: this.username,
+              password: this.password,
+            };
+
+            this.signUserUp(userData);
+          }
+        });
       }
     },
     goBack() {

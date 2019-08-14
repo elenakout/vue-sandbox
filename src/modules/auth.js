@@ -3,31 +3,17 @@ import db from '@/firebase/init';
 
 const state = {
   user: null,
-  isAdmin: false,
-  error: null,
 };
 
 const getters = {
   activeUser() {
     return state.user;
   },
-
-  userAdmin() {
-    return state.isAdmin;
-  },
-
-  errors() {
-    return state.error;
-  },
 };
 
 const mutations = {
   setUser(payload) {
     state.user = payload;
-  },
-
-  setError(payload) {
-    state.error = payload;
   },
 };
 
@@ -52,9 +38,6 @@ const actions = {
 
         ref.set(newUser);
         commit('setUser', newUser);
-      })
-      .catch((error) => {
-        commit('setError', error);
       });
   },
 
@@ -74,9 +57,6 @@ const actions = {
             commit('setUser', usr);
           });
         });
-      })
-      .catch((err) => {
-        commit('setError', err);
       });
   },
 

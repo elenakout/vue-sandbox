@@ -60,7 +60,7 @@
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <!-- <v-btn text router to="/">Dashboard</v-btn> -->
-                <v-btn text router to='/signup'>
+                <v-btn text router to='/signup' v-if="!this.activeUser">
                     <span>Sign Up</span>
                     <v-icon right>mdi-login-variant</v-icon>
                 </v-btn >
