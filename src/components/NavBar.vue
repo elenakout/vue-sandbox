@@ -6,6 +6,7 @@
         class="blue-grey darken-3"
         dark
         app
+        v-if="this.activeUser"
         >
             <v-subheader >Menu</v-subheader>
             <v-list>
@@ -47,7 +48,10 @@
 
         clipped-left
         dark color="blue-grey darken-4">
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon
+            @click.stop="drawer = !drawer"
+            v-if="this.activeUser"
+            ></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
             <v-toolbar-title>
                 <span class="font-weight-light">GetShit</span>
@@ -68,6 +72,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
@@ -80,6 +86,10 @@ export default {
 
     };
   },
+  computed: {
+    ...mapGetters(['activeUser']),
+  },
+
 
 };
 </script>

@@ -9,9 +9,6 @@ const state = {
 
 const getters = {
   activeUser() {
-    if (state.user.isAdmin === true) {
-      state.isAdmin = true;
-    }
     return state.user;
   },
 
