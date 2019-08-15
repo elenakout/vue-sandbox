@@ -62,7 +62,7 @@
                             :rules="[
                                         passwordRules.required,
                                         passwordRules.min,
-                                        passwordConfirmationRule
+                                        passwordRules.match
                                     ]"
                             type="password"
                             label="Retype Password"
@@ -111,7 +111,7 @@ import slugify from 'slugify';
 
 export default {
   name: 'signup',
-  data: () => ({
+  data: vm => ({
     valid: true,
 
     slug: null,
@@ -131,14 +131,12 @@ export default {
     passwordRules: {
       required: v => !!v || 'Password is required',
       min: v => v.length >= 6 || 'Min 6 characters',
+      match: v => v === vm.password || 'Passwords must match',
 
     },
   }),
   computed: {
     ...mapGetters(['activeuser', 'feedback']),
-    passwordConfirmationRule() {
-      return () => (this.password === this.rePassword) || 'Password must match';
-    },
   },
   watch: {
     activeuser(value) {
@@ -148,8 +146,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['signUserUp']),
+    ...mapActions(['signUserUp', 'feedbackReset']),
     onSubmit() {
+      this.feedbackReset();
       if (this.username !== '' && this.email !== '' && this.password !== '' && this.rePassword !== '') {
         this.slug = slugify(this.username, {
           replacement: '-',

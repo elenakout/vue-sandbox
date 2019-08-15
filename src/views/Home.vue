@@ -106,7 +106,7 @@ export default {
     ...mapGetters(['feedback']),
   },
   methods: {
-    ...mapActions(['signUserIn']),
+    ...mapActions(['signUserIn', 'feedbackReset']),
     onSubmit() {
       if (this.email !== '' && this.password !== '') {
         const userData = {
@@ -122,6 +122,7 @@ export default {
       this.$refs.formin.reset();
       this.$router.push({ name: 'home' });
     },
+
   },
 
 };

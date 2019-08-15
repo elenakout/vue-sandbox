@@ -26,20 +26,20 @@ const mutations = {
 };
 
 const actions = {
+  feedbackReset({ commit }) {
+    commit('setFeedback', null);
+  },
   signUserUp({ commit }, payload) {
-    const ref = db.collection('users').doc(payload.slug);
-
     firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then((cred) => {
+        const ref = db.collection('users').doc(cred.user.uid);
         const newUser = {
-          id: payload.slug,
+          id: cred.user.uid,
           username: payload.username,
-          userId: cred.user.uid,
+          userId: payload.slug,
           email: cred.user.email,
-          displayName: cred.user.displayName,
-          fotoUrl: cred.user.photoURL,
           isAdmin: false,
           date: Date.now(),
         };

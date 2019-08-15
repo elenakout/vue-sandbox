@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <h1 class="test display-4">home</h1>
-      <h1>{{ activeuser.username}}</h1>
+      <h1>{{ activeuser}}</h1>
 
     </v-container>
 
