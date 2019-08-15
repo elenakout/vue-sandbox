@@ -6,7 +6,7 @@
         class="blue-grey darken-3"
         dark
         app
-        v-if="this.activeUser"
+        v-if="this.activeuser"
         >
             <v-subheader >Menu</v-subheader>
             <v-list>
@@ -18,8 +18,8 @@
 
                 <v-list-item >
                     <v-list-item-content>
-                        <v-list-item-title class="title">Elena Kout</v-list-item-title>
-                        <v-list-item-subtitle>elenakout@gmail.com</v-list-item-subtitle>
+                        <v-list-item-title class="title">{{activeuser.username}}</v-list-item-title>
+                        <v-list-item-subtitle>{{activeuser.email}}</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -50,19 +50,27 @@
         dark color="blue-grey darken-4">
             <v-app-bar-nav-icon
             @click.stop="drawer = !drawer"
-            v-if="this.activeUser"
+            v-if="this.activeuser"
             ></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            <v-toolbar-title>
+            <v-toolbar-title router to="/">
                 <span class="font-weight-light">GetShit</span>
                 <span>Done</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <!-- <v-btn text router to="/">Dashboard</v-btn> -->
-                <v-btn text router to='/signup' v-if="!this.activeUser">
+                <v-btn text router to='/signup' v-if="!this.activeuser">
                     <span>Sign Up</span>
                     <v-icon right>mdi-login-variant</v-icon>
+                </v-btn >
+                <v-btn
+                text
+                 @click="logout"
+                 v-if="this.activeuser"
+                 >
+                    <span>Log Out</span>
+                    <v-icon right>mdi-logout-variant</v-icon>
                 </v-btn >
             </v-toolbar-items>
         </v-app-bar>
@@ -72,7 +80,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -87,7 +95,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['activeUser']),
+    ...mapGetters(['activeuser']),
+  },
+  methods: {
+    ...mapActions(['signUserOut']),
+    logout() {
+      this.signUserOut();
+      this.$router.push({ name: 'home' });
+    },
+
   },
 
 

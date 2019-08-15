@@ -24,6 +24,7 @@
 
 
                         </v-toolbar>
+
                         <v-card-text>
                             <v-form
                             ref="form"
@@ -92,20 +93,12 @@
                             </v-form>
                         </v-card-text>
                     </v-card>
+                    <v-alert type="error" v-if="feedback">
+                        {{feedback}}
+                    </v-alert>
                 </v-col>
             </v-row>
-            <v-snackbar
-                v-model="snackbar"
-              >
-                {{ feedback }}
-                <v-btn
-                  color="pink"
-                  text
-                  @click="snackbar = false"
-                >
-                  Close
-                </v-btn>
-    </v-snackbar>
+
         </v-container>
     </div>
 </template>
@@ -113,15 +106,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import slugify from 'slugify';
-import db from '@/firebase/init';
+// import db from '@/firebase/init';
 
 
 export default {
   name: 'signup',
   data: () => ({
     valid: true,
-    feedback: '',
-    snackbar: false,
 
     slug: null,
     username: '',
@@ -144,13 +135,13 @@ export default {
     },
   }),
   computed: {
-    ...mapGetters(['activeUser']),
+    ...mapGetters(['activeuser', 'feedback']),
     passwordConfirmationRule() {
       return () => (this.password === this.rePassword) || 'Password must match';
     },
   },
   watch: {
-    activeUser(value) {
+    activeuser(value) {
       if (value !== null && value !== undefined) {
         this.$router.push({ name: 'dashboard' });
       }
@@ -166,28 +157,19 @@ export default {
           lower: true,
         });
 
-        const ref = db.collection('users').doc(this.slug);
+        const userData = {
+          slug: this.slug,
+          email: this.email,
+          username: this.username,
+          password: this.password,
+        };
 
-        ref.get().then((doc) => {
-          if (doc.exists) {
-            this.feedback = 'This username already exists';
-            this.snackbar = true;
-          } else {
-            const userData = {
-              slug: this.slug,
-              email: this.email,
-              username: this.username,
-              password: this.password,
-            };
-
-            this.signUserUp(userData);
-          }
-        });
+        this.signUserUp(userData);
       }
     },
     goBack() {
       this.$refs.form.reset();
-      this.$router.push({ name: 'dashboard' });
+      this.$router.push({ name: 'home' });
     },
 
   },

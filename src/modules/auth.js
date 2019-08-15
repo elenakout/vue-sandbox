@@ -1,19 +1,27 @@
 import firebase from 'firebase';
 import db from '@/firebase/init';
 
-const state = {
+const data = {
   user: null,
+  feedback: null,
 };
 
 const getters = {
-  activeUser() {
-    return state.user;
+  activeuser() {
+    return data.user;
+  },
+  feedback() {
+    return data.feedback;
   },
 };
 
 const mutations = {
-  setUser(payload) {
+  setUser(state, payload) {
     state.user = payload;
+    console.log(state.user);
+  },
+  setFeedback(state, message) {
+    state.feedback = message;
   },
 };
 
@@ -38,10 +46,14 @@ const actions = {
 
         ref.set(newUser);
         commit('setUser', newUser);
+      })
+      .catch((err) => {
+        commit('setFeedback', err.message);
       });
   },
 
   signUserIn({ commit }, payload) {
+    const { router } = payload;
     firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
@@ -55,8 +67,13 @@ const actions = {
               id: doc.id,
             };
             commit('setUser', usr);
+
+            router.push({ name: 'dashboard' });
           });
         });
+      })
+      .catch((err) => {
+        commit('setFeedback', err.message);
       });
   },
 
@@ -71,7 +88,7 @@ const actions = {
 };
 
 export default {
-  state,
+  state: data,
   getters,
   actions,
   mutations,
