@@ -87,7 +87,7 @@ export default {
     return {
       drawer: false,
       drawerItems: [
-        { icon: 'mdi-view-dashboard', title: 'Dashboard', route: '/' },
+        { icon: 'mdi-view-dashboard', title: 'Dashboard', route: '/dashboard' },
         { icon: 'mdi-folder', title: 'My Projects', route: '/projects' },
         { icon: 'mdi-account', title: 'Team', route: '/team' },
       ],
