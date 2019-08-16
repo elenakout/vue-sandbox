@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import moment from 'moment';
 import db from '@/firebase/init';
 
 const data = {
@@ -44,7 +45,7 @@ const actions = {
           userId: payload.slug,
           email: cred.user.email,
           isAdmin: false,
-          date: Date.now(),
+          date: moment(Date.now()).format('LL'),
         };
 
         ref.set(newUser);
@@ -80,12 +81,13 @@ const actions = {
       });
   },
 
-  signUserOut({ commit }) {
+  signUserOut({ commit, dispatch }) {
     firebase
       .auth()
       .signOut()
       .then(() => {
         commit('setUser', null);
+        dispatch('clearBoards');
       });
   },
 };

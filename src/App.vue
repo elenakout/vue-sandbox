@@ -1,9 +1,14 @@
 <template>
   <v-app>
     <nav-bar />
-    <v-content>
+    <v-content class="fill-height">
       <router-view/>
     </v-content>
+
+    <v-footer>
+    <v-spacer></v-spacer>
+    <div>Made with ❤ by elenakout &copy; {{ new Date().getFullYear() }}</div>
+  </v-footer>
   </v-app>
 </template>
 
