@@ -49,10 +49,14 @@ export default new Router({
       name: 'admin',
       component: Admin,
       beforeEnter(to, from, next) {
-        if (store.getters.activeuser == null) {
-          next({ name: 'home' });
+        if (store.getters.activeuser !== null) {
+          if (store.getters.isadmin) {
+            next();
+          } else {
+            next({ name: 'dashboard ' });
+          }
         } else {
-          next();
+          next({ name: 'home' });
         }
       },
     },

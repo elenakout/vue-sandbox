@@ -4,7 +4,6 @@ import db from '@/firebase/init';
 const data = {
   user: null,
   feedback: null,
-  admin: false,
 };
 
 const getters = {
@@ -14,8 +13,8 @@ const getters = {
   feedback() {
     return data.feedback;
   },
-  admin() {
-    return data.admin;
+  isadmin() {
+    return data.user.isAdmin;
   },
 };
 

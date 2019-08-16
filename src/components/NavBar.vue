@@ -29,6 +29,19 @@
             <v-list shaped>
                 <v-list-item-group color="grey" >
                     <v-list-item
+                    to="/admin"
+                    v-if="activeuser.isAdmin"
+                    >
+                        <v-list-item-icon>
+                            <v-icon >mdi-folder</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                                <v-list-item-title>Admin Dashboard</v-list-item-title>
+                        </v-list-item-content>
+
+                    </v-list-item>
+
+                    <v-list-item
                     v-for="(item, index) in drawerItems"
                     :key="index" router
                     :to="item.route"
