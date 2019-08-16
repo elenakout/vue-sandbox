@@ -33,7 +33,7 @@
                     v-if="activeuser.isAdmin"
                     >
                         <v-list-item-icon>
-                            <v-icon >mdi-folder</v-icon>
+                            <v-icon >mdi-worker</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
                                 <v-list-item-title>Admin Dashboard</v-list-item-title>
