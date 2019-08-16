@@ -105,6 +105,13 @@ export default {
   computed: {
     ...mapGetters(['activeuser', 'feedback', 'admin']),
   },
+  watch: {
+    activeuser(value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push({ name: 'dashboard' });
+      }
+    },
+  },
   methods: {
     ...mapActions(['signUserIn', 'feedbackReset']),
     onSubmit() {

@@ -6,6 +6,9 @@ import Dashboard from './views/Dashboard.vue';
 import Projects from './views/Projects.vue';
 import Team from './views/Team.vue';
 import SignUp from './views/SignUp.vue';
+import Admin from './views/Admin.vue';
+
+import store from './store';
 
 Vue.use(Router);
 
@@ -21,17 +24,51 @@ export default new Router({
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      beforeEnter(to, from, next) {
+        if (store.getters.activeuser !== null) {
+          next();
+        } else {
+          next({ name: 'home' });
+        }
+      },
     },
     {
       path: '/projects',
       name: 'projects',
       component: Projects,
+      beforeEnter(to, from, next) {
+        if (store.getters.activeuser !== null) {
+          next();
+        } else {
+          next({ name: 'home' });
+        }
+      },
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
+      beforeEnter(to, from, next) {
+        if (store.getters.activeuser == null) {
+          next({ name: 'home' });
+        } else {
+          next();
+        }
+      },
     },
     {
       path: '/team',
       name: 'team',
       component: Team,
+      beforeEnter(to, from, next) {
+        if (store.getters.activeuser !== null) {
+          next();
+        } else {
+          next({ name: 'home' });
+        }
+      },
     },
+
     {
       path: '/signup',
       name: 'signup',
