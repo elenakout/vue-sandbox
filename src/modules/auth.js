@@ -4,6 +4,7 @@ import db from '@/firebase/init';
 const data = {
   user: null,
   feedback: null,
+  admin: false,
 };
 
 const getters = {
@@ -13,12 +14,15 @@ const getters = {
   feedback() {
     return data.feedback;
   },
+  admin() {
+    return data.admin;
+  },
 };
 
 const mutations = {
   setUser(state, payload) {
     state.user = payload;
-    console.log(state.user);
+    // console.log(state.user);
   },
   setFeedback(state, message) {
     state.feedback = message;

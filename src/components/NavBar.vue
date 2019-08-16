@@ -20,6 +20,7 @@
                     <v-list-item-content>
                         <v-list-item-title class="title">{{activeuser.username}}</v-list-item-title>
                         <v-list-item-subtitle>{{activeuser.email}}</v-list-item-subtitle>
+                        <v-list-item-subtitle v-if="activeuser.isAdmin">Admin</v-list-item-subtitle>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>

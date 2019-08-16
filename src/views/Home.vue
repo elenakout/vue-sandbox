@@ -103,7 +103,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['feedback']),
+    ...mapGetters(['activeuser', 'feedback', 'admin']),
   },
   methods: {
     ...mapActions(['signUserIn', 'feedbackReset']),
