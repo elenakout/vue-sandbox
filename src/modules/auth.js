@@ -22,7 +22,6 @@ const getters = {
 const mutations = {
   setUser(state, payload) {
     state.user = payload;
-    // console.log(state.user);
   },
   setFeedback(state, message) {
     state.feedback = message;
