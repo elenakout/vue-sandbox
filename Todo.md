@@ -6,4 +6,5 @@
 # Todo
 
 - [] Validation on create board
-- [] Create seperate components for dashboard
+- [*] Create seperate components for dashboard
+- [] Cant Delete new board without restart

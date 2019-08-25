@@ -5,6 +5,7 @@ import db from '@/firebase/init';
 const data = {
   user: null,
   feedback: null,
+  users: [],
 };
 
 const getters = {
@@ -17,6 +18,9 @@ const getters = {
   isadmin() {
     return data.user.isAdmin;
   },
+  allUsers() {
+    return data.users;
+  },
 };
 
 const mutations = {
@@ -25,6 +29,12 @@ const mutations = {
   },
   setFeedback(state, message) {
     state.feedback = message;
+  },
+  setUsers(state, payload) {
+    state.users.push(payload);
+  },
+  resetUsers() {
+    data.users = [];
   },
 };
 
@@ -44,7 +54,7 @@ const actions = {
           userId: payload.slug,
           email: cred.user.email,
           isAdmin: false,
-          date: moment(Date.now()).format('LL'),
+          date: moment(Date.now()).format('LLL'),
         };
 
         ref.set(newUser);
@@ -87,6 +97,21 @@ const actions = {
       .then(() => {
         commit('setUser', null);
         dispatch('clearBoards');
+      });
+  },
+
+  fetchUsers({ commit }) {
+    commit('resetUsers');
+    db.collection('users')
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          const user = {
+            ...doc.data(),
+            id: doc.id,
+          };
+          commit('setUsers', user);
+        });
       });
   },
 };

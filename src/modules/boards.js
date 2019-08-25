@@ -18,6 +18,9 @@ const mutations = {
   setBoards(state, payload) {
     state.boards.push(payload);
   },
+  deleteBoard(state, id) {
+    state.boards = state.boards.filter(board => board.id !== id);
+  },
 };
 
 const actions = {
@@ -28,7 +31,7 @@ const actions = {
     const board = {
       name: payload.name,
       ownerId: payload.ownerId,
-      date: moment(payload.date).format('LL'),
+      date: moment(payload.date).format('LLL'),
       membersId: [],
     };
     db.collection('boards')
@@ -37,6 +40,7 @@ const actions = {
         commit('setBoards', board);
       });
   },
+
   fetchUserBoards({ commit }, user) {
     commit('resetBoards');
     const ref = db.collection('boards').where('ownerId', '==', user);
@@ -52,6 +56,15 @@ const actions = {
           };
           commit('setBoards', board);
         });
+      });
+  },
+
+  deleteBoard({ commit }, id) {
+    db.collection('boards')
+      .doc(id)
+      .delete()
+      .then(() => {
+        commit('deleteBoard', id);
       });
   },
 };

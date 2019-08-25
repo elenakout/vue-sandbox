@@ -18,7 +18,7 @@
 
         <v-card-actions class="mt-3">
             <v-btn text small color="primary" >Open</v-btn>
-            <v-btn text color="error">Delete</v-btn>
+            <v-btn text color="error" @click="deleteBoard(board.id)">Delete</v-btn>
             <v-btn text>Add members</v-btn>
         </v-card-actions>
         </v-card>
@@ -26,9 +26,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'boardsList',
   props: ['boards'],
+  methods: {
+    ...mapActions(['deleteBoard']),
+  },
 };
 </script>
 
