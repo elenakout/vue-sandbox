@@ -59,13 +59,13 @@
                             Submit
                             </v-btn>
 
-                            <v-btn
+                            <!-- <v-btn
                             class="mt-4"
                             color="white"
                             @click="goBack"
                             >
                             Cancel
-                            </v-btn>
+                            </v-btn> -->
 
                             </v-form>
                         </v-card-text>
@@ -77,6 +77,10 @@
             </v-row>
 
         </v-container>
+
+    <v-overlay :value="overlay">
+      <v-progress-circular indeterminate size="64"></v-progress-circular>
+    </v-overlay>
     </div>
 </template>
 
@@ -88,6 +92,7 @@ export default {
   data() {
     return {
       valid: true,
+      overlay: false,
 
       email: '',
       password: '',
@@ -111,10 +116,16 @@ export default {
         this.$router.push({ name: 'dashboard' });
       }
     },
+    feedback(value) {
+      if (value) {
+        this.overlay = false;
+      }
+    },
   },
   methods: {
     ...mapActions(['signUserIn', 'feedbackReset']),
     onSubmit() {
+      this.overlay = true;
       if (this.email !== '' && this.password !== '') {
         const userData = {
           email: this.email,
