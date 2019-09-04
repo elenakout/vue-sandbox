@@ -11,12 +11,13 @@
             <v-subheader >Menu</v-subheader>
             <v-list>
                 <v-list-item >
-                    <v-list-item-avatar>
-                        <v-img src="https://i.imgur.com/mDSKItg.png"></v-img>
-                    </v-list-item-avatar>
+
                 </v-list-item>
 
                 <v-list-item >
+                    <v-list-item-avatar >
+                        <v-img src="https://i.imgur.com/mDSKItg.png"></v-img>
+                    </v-list-item-avatar>
                     <v-list-item-content>
                         <v-list-item-title class="title">{{activeuser.username}}</v-list-item-title>
                         <v-list-item-subtitle>{{activeuser.email}}</v-list-item-subtitle>
@@ -57,38 +58,36 @@
             </v-list>
     </v-navigation-drawer>
 
-        <v-app-bar
+    <v-app-bar
         app
-
         clipped-left
         dark color="blue-grey darken-4">
-            <v-app-bar-nav-icon
-            @click.stop="drawer = !drawer"
-            v-if="this.activeuser"
-            ></v-app-bar-nav-icon>
-            <v-spacer></v-spacer>
-            <v-toolbar-title router to="/">
-                <span class="font-weight-light">GetShit</span>
-                <span>Done</span>
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <!-- <v-btn text router to="/">Dashboard</v-btn> -->
-                <v-btn text router to='/signup' v-if="!this.activeuser">
-                    <span>Sign Up</span>
-                    <v-icon right>mdi-login-variant</v-icon>
-                </v-btn >
-                <v-btn
-                text
-                 @click="logout"
-                 v-if="this.activeuser"
-                 >
-                    <span>Log Out</span>
-                    <v-icon right>mdi-logout-variant</v-icon>
-                </v-btn >
-            </v-toolbar-items>
-        </v-app-bar>
-
+        <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        v-if="this.activeuser"
+        ></v-app-bar-nav-icon>
+        <v-spacer></v-spacer>
+        <v-toolbar-title router to="/">
+            <span class="font-weight-light">GetShit</span>
+            <span>Done</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+            <!-- <v-btn text router to="/">Dashboard</v-btn> -->
+            <v-btn text router to='/signup' v-if="!this.activeuser">
+                <span>Sign Up</span>
+                <v-icon right>mdi-login-variant</v-icon>
+            </v-btn >
+            <v-btn
+            text
+                @click="logout"
+                v-if="this.activeuser"
+                >
+                <span>Log Out</span>
+                <v-icon right>mdi-logout-variant</v-icon>
+            </v-btn >
+        </v-toolbar-items>
+    </v-app-bar>
 
     </nav>
 </template>
@@ -99,7 +98,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
-      drawer: false,
+      drawer: true,
       drawerItems: [
         { icon: 'mdi-view-dashboard', title: 'Dashboard', route: '/dashboard' },
         { icon: 'mdi-folder', title: 'My Projects', route: '/projects' },

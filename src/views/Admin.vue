@@ -23,6 +23,21 @@
             <template v-slot:item.isAdmin="{ item }">
               <v-chip :color="getColor(item.isAdmin)" dark>{{ item.isAdmin }}</v-chip>
             </template>
+            <template v-slot:item.action="{ item }">
+              <v-icon
+                small
+                class="mr-2"
+                @click="editItem(item)"
+              >
+                edit
+              </v-icon>
+              <v-icon
+                small
+                @click="deleteItem(item)"
+              >
+                delete
+              </v-icon>
+            </template>
           </v-data-table>
         </v-card>
 
@@ -42,6 +57,7 @@ export default {
         { text: 'Date', value: 'date' },
         { text: 'Email', value: 'email' },
         { text: 'Is Admin', value: 'isAdmin' },
+        { text: 'Actions', value: 'action', sortable: false },
       ],
     };
   },
@@ -51,11 +67,17 @@ export default {
       if (isAdmin) return 'green';
       return 'red';
     },
+    editItem(item) {
+      console.log(item);
+    },
+    deleteItem(item) {
+      console.log(item);
+    },
   },
   computed: {
     ...mapGetters(['allUsers']),
   },
-  created() {
+  mounted() {
     this.fetchUsers();
   },
 };
