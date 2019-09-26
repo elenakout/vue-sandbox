@@ -21,10 +21,14 @@
       </div>
       <div class="comp-container">
         <div class="description">
-          <h1 class="title">Humburger Animation</h1>
-          <p>YouTube tutorial</p>
+          <h1 class="title">Hover effect</h1>
+          <p>Before and After Pseudo Elements Easily Explained [CSS]</p>
+          <p>codeSTACKr
+            <a href="https://youtu.be/-bwR9S5MmOI?t=761" target="_blank"><v-icon color="red">mdi-youtube</v-icon></a>
+          </p>
+          <p>cool effect</p>
         </div>
-        <hamburger />
+        <btn-hover />
       </div>
 
 
@@ -34,12 +38,14 @@
 <script>
 import Hamburger from '@/components/designsys/hamburger-animation.vue';
 import LinePseudo from '@/components/designsys/lines-pseudo.vue';
+import BtnHover from '@/components/designsys/btn-hover.vue';
 
 export default {
   name: 'designsys',
   components: {
     Hamburger,
     LinePseudo,
+    BtnHover,
   },
 };
 </script>
@@ -52,7 +58,7 @@ export default {
   padding: 20px;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat( auto-fit, 350px );
+  grid-template-columns: repeat( auto-fit, 400px );
   grid-auto-rows: min-content;
   grid-gap: 15px;
 }
