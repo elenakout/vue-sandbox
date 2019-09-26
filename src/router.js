@@ -7,6 +7,7 @@ import Projects from './views/Projects.vue';
 import Team from './views/Team.vue';
 import SignUp from './views/SignUp.vue';
 import Admin from './views/Admin.vue';
+import DesignSys from './views/DesignSys.vue';
 
 import store from './store';
 
@@ -77,6 +78,11 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: SignUp,
+    },
+    {
+      path: '/designsys',
+      name: 'designsys',
+      component: DesignSys,
     },
   ],
 });

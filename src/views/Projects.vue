@@ -1,18 +1,14 @@
 <template>
     <div class="container2">
-      <h1 class="center-content">Little Components</h1>
-      <hambuger></hambuger>
+      <h1 class="center-content">Projects</h1>
     </div>
 </template>
 
 <script>
-import Hambuger from '@/components/projects/hamburger-animation.vue';
+
 
 export default {
   name: 'projects',
-  components: {
-    Hambuger,
-  },
   data: () => ({
     e1: 0,
   }),

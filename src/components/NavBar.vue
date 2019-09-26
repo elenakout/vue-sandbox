@@ -103,6 +103,7 @@ export default {
         { icon: 'mdi-view-dashboard', title: 'Dashboard', route: '/dashboard' },
         { icon: 'mdi-folder', title: 'My Projects', route: '/projects' },
         { icon: 'mdi-account', title: 'Team', route: '/team' },
+        { icon: 'mdi-star', title: 'DesignSystem', route: '/designsys' },
       ],
 
     };
