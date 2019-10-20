@@ -23,6 +23,7 @@
             <template v-slot:item.isAdmin="{ item }">
               <v-chip :color="getColor(item.isAdmin)" dark>{{ item.isAdmin }}</v-chip>
             </template>
+
             <template v-slot:item.action="{ item }">
               <v-icon
                 small
