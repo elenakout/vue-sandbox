@@ -38,7 +38,7 @@ export default {
   background-color: black;
   min-height: 8vh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-around;
   position: relative;
 }
@@ -47,6 +47,7 @@ export default {
   color: rgb(224, 223, 223);
   font-size: 20px;
   text-transform: uppercase;
+  align-self: center;
 }
 
 .nav-links a {
@@ -67,6 +68,7 @@ export default {
   display: flex;
   width: 30%;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-item {
