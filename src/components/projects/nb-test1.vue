@@ -6,7 +6,7 @@
           <h4>Company Name</h4>
         </div>
         <ul class="nav-links " v-bind:class="{ open: isOpen }">
-          <li><a href="#" class="nav-item">Home</a></li>
+          <li><router-link class="nav-item" :to="{ path: 'projects' }">Home</router-link></li>
           <li><a href="#" class="nav-item">Events</a></li>
           <li><a href="#" class="nav-item">Projects</a></li>
           <li><a href="#" class="nav-item">About</a></li>
@@ -36,6 +36,7 @@ export default {
 
 .navigation {
   background-color: black;
+  height: 0px;
   min-height: 8vh;
   display: flex;
   align-items: stretch;
@@ -72,10 +73,16 @@ export default {
 }
 
 .nav-item {
-  &:hover {
-    border-top: 2.75px solid rgb(224, 223, 223);
+  &:hover,
+  &:active {
+    color: rgba(224, 223, 223, 0.747);
+    border-top: 2.75px solid rgba(224, 223, 223, 0.747);
     padding-top: 5px;
   }
+}
+
+.hlshow {
+  display: none;
 }
 
 // Burger Menu
@@ -141,6 +148,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    overflow-y: hidden;
+  }
   .burger {
     display: block;
   }
@@ -148,21 +158,31 @@ export default {
   .nav-links {
     padding: 20px 0;
     position: absolute;
-    left: 0px;
-    height: 25vh;
+    right: 0px;
+    height: 50vh;
     width: 100%;
     top: 8vh;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transform: translateY(-100%);
+    transition: all 0.5s ease-in-out;
+
+    &li {
+      opacity: 0;
+    }
   }
 
   .nav-links.open {
     opacity: 1;
+    transform: translateY(0);
+
+    &li {
+      opacity: 1;
+    }
   }
 
   .nav-item:hover {
@@ -172,6 +192,11 @@ export default {
 
   .v-application ul {
     padding: 15px 0;
+  }
+
+  .hlshow {
+    display: block;
+    width: 30%;
   }
 }
 </style>

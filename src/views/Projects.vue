@@ -1,13 +1,12 @@
 <template>
   <div class="container2">
-    <h1 class="center-content">Projects</h1>
     <h1>NAV BARS</h1>
     <nb-test1 />
   </div>
 </template>
 
 <script>
-import NbTest1 from '@/components/designsys/nb-test1.vue';
+import NbTest1 from '@/components/projects/nb-test1.vue';
 
 export default {
   name: 'projects',
