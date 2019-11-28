@@ -186,7 +186,9 @@ export default {
   }
 
   .nav-item:hover {
-    border-top: none;
+    border-top: 2.75px solid rgba(224, 223, 223, 0.747);
+    padding-top: 5px;
+
     color: rgba(224, 223, 223, 0.452);
   }
 
