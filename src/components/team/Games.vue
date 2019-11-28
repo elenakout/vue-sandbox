@@ -18,9 +18,7 @@ export default {
   computed: {
     ...mapGetters(['getGames']),
   },
-  created() {
-    this.fetchSeason();
-  },
+  created() {},
 };
 </script>
 

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
 import firebase from 'firebase';
-import cors from 'cors';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -11,7 +11,6 @@ import db from '@/firebase/init';
 
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
-Vue.use(cors());
 
 let app;
 
