@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuelidate from 'vuelidate';
 import firebase from 'firebase';
 
+import axios from 'axios';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -11,6 +12,7 @@ import db from '@/firebase/init';
 
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
+Vue.prototype.$http = axios;
 
 let app;
 
@@ -26,12 +28,12 @@ const initialize = () => {
 };
 
 // wait for firebase to init before create the app
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
     const ref = db.collection('users').where('id', '==', user.uid);
 
-    ref.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
+    ref.get().then(snapshot => {
+      snapshot.forEach(doc => {
         const usr = {
           ...doc.data(),
           id: doc.id,

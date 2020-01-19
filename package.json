@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.1",
     "core-js": "^2.6.5",
     "cors": "^2.8.5",
     "firebase": "^6.3.5",
@@ -46,6 +47,9 @@
       "plugin:vue/essential",
       "@vue/airbnb"
     ],
+    "rules": {
+      "arrow-parens": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

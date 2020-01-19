@@ -85,6 +85,7 @@ export default {
         { icon: 'mdi-folder', title: 'My Projects', route: '/projects' },
         { icon: 'mdi-account', title: 'Team', route: '/team' },
         { icon: 'mdi-star', title: 'DesignSystem', route: '/designsys' },
+        { icon: 'mdi-movie-open', title: 'Starwars App', route: '/starwars' },
       ],
     };
   },

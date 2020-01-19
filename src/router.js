@@ -8,6 +8,7 @@ import Team from './views/Team.vue';
 import SignUp from './views/SignUp.vue';
 import Admin from './views/Admin.vue';
 import DesignSys from './views/DesignSys.vue';
+import Starwars from './views/Starwars.vue';
 
 import store from './store';
 
@@ -83,6 +84,11 @@ export default new Router({
       path: '/designsys',
       name: 'designsys',
       component: DesignSys,
+    },
+    {
+      path: '/starwars',
+      name: 'starwars',
+      component: Starwars,
     },
   ],
 });
