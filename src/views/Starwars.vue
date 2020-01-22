@@ -1,23 +1,6 @@
 <template>
   <section class="starwars container">
-    <div class="allmovies">
-      <v-card class="mr-5 mb-5" min-width="369" v-for="movie in movies" :key="movie.episode_id">
-        <v-card-text>
-          <div>No {{ movie.episode_id }}</div>
-          <p class="display-1 text--primary">
-            {{ movie.title }}
-          </p>
-          <p>{{ formatdate(movie.release_date) }}</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn text color="deep-purple accent-4" @click="oneMovie(movie.url)">
-            Learn More
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <v-card class="mx-auto onemovie-card" max-width="344" v-if="isMovie">
+    <v-card class="mx-auto onemovie-card mb-10" max-width="344" v-if="isMovie">
       <v-card-text>
         <div>{{ onemovie.episode_id }}</div>
         <p class="display-1 text--primary">
@@ -35,6 +18,22 @@
         </v-btn>
       </v-card-actions>
     </v-card>
+    <div class="allmovies">
+      <v-card class="mr-5 mb-5" min-width="369" v-for="movie in movies" :key="movie.episode_id">
+        <v-card-text>
+          <div>No {{ movie.episode_id }}</div>
+          <p class="display-1 text--primary">
+            {{ movie.title }}
+          </p>
+          <p>{{ formatdate(movie.release_date) }}</p>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn text color="deep-purple accent-4" @click="oneMovie(movie.url)">
+            Learn More
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </div>
   </section>
 </template>
 
@@ -96,17 +95,21 @@ export default {
 <style scoped>
 .starwars {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .allmovies {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 50vw;
-  justify-content: flex-start;
-  align-items: flex-start;
+
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
 .onemovie-card {
   height: fit-content;
+
+  justify-self: flex-start;
 }
 </style>
