@@ -21,32 +21,13 @@ const mutations = {
 };
 
 const actions = {
-  //   async fetchSeason() {
-  //     const URL = 'http://api.football-data.org/v2/competitions/SA/';
-  //     const URL_MD = 'https://api.football-data.org/v2/competitions/SA/matches/?matchday=';
-  //     const URL_PROXY = 'https://agile-crag-20003.herokuapp.com/';
-  //     const response = await fetch(URL, {
-  //       method: 'GET',
-  //       headers: { 'X-Auth-Token': '81d8a01b342f4a70a57c9ab956cfa00f' },
-  //     });
-  //     const season = await response.json();
-  //     const matchDay = season.currentSeason.currentMatchday;
-  //     const dayMatches = await fetch(
-  //       `${URL_PROXY}https://api.football-data.org/v2/competitions/SA/matches`,
-  //       {
-  //         method: 'GET',
-  //         headers: {
-  //           'X-Auth-Token': '81d8a01b342f4a70a57c9ab956cfa00f',
-  //           'Access-Control-Allow-Origin': '*',
-  //           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  //           'content-type': 'application/json',
-  //
-  //         },
-  //         mode: 'no-cors',
-  //       },
-  //     );
-  //     console.log(dayMatches);
-  //   },
+  async fetchSeason() {
+    const dayMatches = await fetch('http://inter-api-proxy.herokuapp.com/inter', {
+      method: 'GET',
+    });
+    const json = await dayMatches.json();
+    console.log(json);
+  },
 };
 
 export default {
@@ -55,3 +36,7 @@ export default {
   actions,
   mutations,
 };
+
+// 'Access-Control-Allow-Origin': '*',
+//         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+//         'content-type': 'application/json',
