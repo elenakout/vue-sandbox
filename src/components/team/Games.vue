@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Game results page</h1>
+    <p>Date: {{ getMatchDate }}</p>
+    <p>Home: {{ getHomeTeam }}</p>
+    <p>Away: {{ getAwayTeam }}</p>
   </div>
 </template>
 
@@ -13,13 +16,13 @@ export default {
     dialog: false,
   }),
   methods: {
-    ...mapActions(['fetchSeason', 'createBoard', 'clearBoards']),
+    ...mapActions(['fetchNextGame']),
   },
   computed: {
-    ...mapGetters(['getGames']),
+    ...mapGetters(['getMatchDate', 'getHomeTeam', 'getAwayTeam']),
   },
   created() {
-    this.fetchSeason();
+    this.fetchNextGame();
   },
 };
 </script>

@@ -1,32 +1,50 @@
 const data = {
-  games: [],
+  matchDate: '',
+  awayTeamId: null,
+  homeTeamId: null,
 };
 
 const getters = {
-  getGames(state) {
-    return state.games;
+  getMatchDate(state) {
+    return state.matchDate;
+  },
+
+  getHomeTeam(state) {
+    return state.homeTeamId;
+  },
+
+  getAwayTeam(state) {
+    return state.awayTeamId;
   },
 };
 
 const mutations = {
-  resetBoards(state) {
-    state.games = [];
+  setMatchDate(state, payload) {
+    state.matchDate = payload;
   },
-  setBoards(state, payload) {
-    state.games.push(payload);
+  setHomeTeam(state, payload) {
+    state.homeTeamId = payload;
   },
-  deleteBoard(state, id) {
-    state.games = state.games.filter(game => game.id !== id);
+  setAwayTeam(state, payload) {
+    state.awayTeamId = payload;
   },
 };
 
 const actions = {
-  async fetchSeason() {
-    const dayMatches = await fetch('http://inter-api-proxy.herokuapp.com/inter', {
+  async fetchNextGame({ commit }) {
+    const dayMatches = await fetch('http://localhost:1228/api/v1/next-game', {
       method: 'GET',
     });
     const json = await dayMatches.json();
-    console.log(json);
+
+    const date = json.utcDate;
+    const home = json.homeTeam;
+    const away = json.awayTeam;
+
+    commit('setMatchDate', date);
+    commit('setHomeTeam', home);
+    commit('setAwayTeam', away);
+    // console.log(json);
   },
 };
 
