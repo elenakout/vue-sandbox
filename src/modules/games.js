@@ -1,7 +1,10 @@
 const data = {
   matchDate: '',
-  awayTeamId: null,
-  homeTeamId: null,
+  awayTeam: null,
+  homeTeam: null,
+  gameInf: null,
+  gameVenue: null,
+
 };
 
 const getters = {
@@ -10,11 +13,19 @@ const getters = {
   },
 
   getHomeTeam(state) {
-    return state.homeTeamId;
+    return state.homeTeam;
   },
 
   getAwayTeam(state) {
-    return state.awayTeamId;
+    return state.awayTeam;
+  },
+
+  getGameInf(state) {
+    return state.gameInf;
+  },
+
+  getGameVenue(state) {
+    return state.gameVenue;
   },
 };
 
@@ -23,12 +34,22 @@ const mutations = {
     state.matchDate = payload;
   },
   setHomeTeam(state, payload) {
-    state.homeTeamId = payload;
+    state.homeTeam = payload;
   },
   setAwayTeam(state, payload) {
-    state.awayTeamId = payload;
+    state.awayTeam = payload;
+  },
+
+  setGameInf(state, payload) {
+    state.gameInf = payload;
+  },
+
+  setGameVenue(state, payload) {
+    state.gameVenue = payload;
   },
 };
+
+// http://inter-api-proxy.herokuapp.com/api/v1/next-game
 
 const actions = {
   async fetchNextGame({ commit }) {
@@ -40,11 +61,31 @@ const actions = {
     const date = json.utcDate;
     const home = json.homeTeam;
     const away = json.awayTeam;
+    const gameId = json.id;
+
+    const homeInf = await fetch(`http://localhost:1228/api/v1/teams/${home.id}`, {
+      method: 'GET',
+    });
+
+    const resHome = await homeInf.json();
+
+    const awayInf = await fetch(`http://localhost:1228/api/v1/teams/${away.id}`, {
+      method: 'GET',
+    });
+
+    const resAway = await awayInf.json();
+
+    const gameInf = await fetch(`http://localhost:1228/api/v1/match/${gameId}`, {
+      method: 'GET',
+    });
+
+    const resGame = await gameInf.json();
 
     commit('setMatchDate', date);
-    commit('setHomeTeam', home);
-    commit('setAwayTeam', away);
-    // console.log(json);
+    commit('setHomeTeam', resHome);
+    commit('setAwayTeam', resAway);
+    commit('setGameInf', resGame.head2head);
+    commit('setGameVenue', resGame.match.venue);
   },
 };
 
