@@ -4,7 +4,7 @@ const data = {
   homeTeam: null,
   gameInf: null,
   gameVenue: null,
-
+  standings: null,
 };
 
 const getters = {
@@ -27,6 +27,10 @@ const getters = {
   getGameVenue(state) {
     return state.gameVenue;
   },
+
+  getStandings(state) {
+    return state.standings;
+  },
 };
 
 const mutations = {
@@ -46,6 +50,10 @@ const mutations = {
 
   setGameVenue(state, payload) {
     state.gameVenue = payload;
+  },
+
+  setStandings(state, payload) {
+    state.standings = payload;
   },
 };
 
@@ -87,6 +95,15 @@ const actions = {
     commit('setGameInf', resGame.head2head);
     commit('setGameVenue', resGame.match.venue);
   },
+
+  async fetchStandings({ commit }) {
+    const getstandings = await fetch('http://localhost:1228/api/v1/standings', {
+      method: 'GET',
+    });
+    const json = await getstandings.json();
+
+    commit('setStandings', json);
+  },
 };
 
 export default {
@@ -95,7 +112,3 @@ export default {
   actions,
   mutations,
 };
-
-// 'Access-Control-Allow-Origin': '*',
-//         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-//         'content-type': 'application/json',

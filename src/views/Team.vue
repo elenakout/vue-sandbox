@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1 class="display-2">team</h1>
-    <games></games>
+    <standings></standings>
   </div>
 </template>
 
 <script>
-import Games from '@/components/team/Games.vue';
+import Standings from '../components/team/Stadings.vue';
 
 export default {
   name: 'team',
   components: {
-    Games,
+    Standings,
   },
 };
 </script>
