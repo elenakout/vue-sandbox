@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuelidate from 'vuelidate';
 import firebase from 'firebase';
-
+import VueTimeline from '@growthbunker/vuetimeline';
 import axios from 'axios';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -13,6 +14,13 @@ import db from '@/firebase/init';
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
+
+// Vue.use(VueTimeline);
+
+Vue.use(VueTimeline, {
+  // Specify the theme to use: dark or light (dark by default).
+  theme: 'light',
+});
 
 let app;
 

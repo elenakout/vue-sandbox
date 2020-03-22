@@ -9,6 +9,7 @@ import SignUp from './views/SignUp.vue';
 import Admin from './views/Admin.vue';
 import DesignSys from './views/DesignSys.vue';
 import Starwars from './views/Starwars.vue';
+import Timeline from './views/Timeline.vue';
 
 import store from './store';
 
@@ -89,6 +90,11 @@ export default new Router({
       path: '/starwars',
       name: 'starwars',
       component: Starwars,
+    },
+    {
+      path: '/timeline',
+      name: 'timeline',
+      component: Timeline,
     },
   ],
 });

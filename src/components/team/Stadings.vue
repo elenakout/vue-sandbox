@@ -35,7 +35,10 @@
                 @error="imageLoadError"
               />
             </td>
-            <td>{{ item.team.name }}</td>
+            <td>
+            <p>jksdjf</p>
+            {{ item.team.name }}
+            </td>
             <td>{{ item.playedGames }}</td>
             <td>{{ item.won }}</td>
             <td>{{ item.draw }}</td>

@@ -10,7 +10,7 @@
     >
       <v-subheader>Menu</v-subheader>
       <v-list>
-        <v-list-item> </v-list-item>
+        <v-list-item></v-list-item>
 
         <v-list-item>
           <v-list-item-avatar>
@@ -48,10 +48,8 @@
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left dark color="blue-grey darken-4">
-      <v-app-bar-nav-icon
-        @click.stop="drawer = !drawer"
-        v-if="this.activeuser"
-      ></v-app-bar-nav-icon>
+      <!-- eslint-disable-next-line max-len -->
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="this.activeuser"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-toolbar-title router to="/">
         <span class="font-weight-light">GetShit</span>
@@ -86,6 +84,7 @@ export default {
         { icon: 'mdi-account', title: 'Team', route: '/team' },
         { icon: 'mdi-star', title: 'DesignSystem', route: '/designsys' },
         { icon: 'mdi-movie-open', title: 'Starwars App', route: '/starwars' },
+        { icon: 'mdi-timeline-outline', title: 'Timeline', route: '/timeline' },
       ],
     };
   },
