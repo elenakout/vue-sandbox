@@ -1,6 +1,11 @@
 <template>
   <div class="timeline container">
-    <button class="hamburger hamburger--collapse ma-12" type="button">
+    <button
+      class="hamburger hamburger--collapse ma-12"
+      type="button"
+      :class="{ 'is-active': isActive }"
+      @click="isActive = !isActive"
+    >
       <span class="hamburger-box">
         <span class="hamburger-inner"></span>
       </span>
@@ -52,6 +57,7 @@ export default {
     title: 'timeline',
     desc:
       'Yesterday we just celebrated the 5th Vueniversary — today we are excited to announce the release of Vue 2.6 !In the past year, we spent <br> a lot of time working on the new CLI and prototyping for 3.0. As a result, Vue core 2.x hasn’t received major updates in quite a while. It’s about time! This release combines a number of substantial improvements, internal changes and new features which are highlighted in this post. For full details, make sure to also check out the full release note on GitHub.',
+    isActive: false,
   }),
 };
 </script>
