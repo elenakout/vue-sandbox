@@ -1,6 +1,13 @@
 <template>
   <div class="timeline container">
+    <button class="hamburger hamburger--collapse ma-12" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+
     <h1>{{title}}</h1>
+
     <!-- Latest update -->
     <div class="time">
       <vue-timeline-update
@@ -52,5 +59,9 @@ export default {
 <style lang="scss" scoped>
 .time {
   width: 50vw;
+}
+
+.bm-burger-bars {
+  background-color: #06175f;
 }
 </style>
