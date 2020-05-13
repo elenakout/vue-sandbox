@@ -5,12 +5,16 @@ import 'firebase/auth';
 import VueTimeline from '@growthbunker/vuetimeline';
 import axios from 'axios';
 
+// import VueYoutube from 'vue-youtube';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
 import vuetify from './plugins/vuetify';
 import db from '@/firebase/init';
+
+// Vue.use(VueYoutube);
 
 Vue.use(Vuelidate);
 Vue.config.productionTip = false;
