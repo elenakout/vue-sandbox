@@ -13,9 +13,9 @@
         <p>Before and After Pseudo Elements Easily Explained [CSS]</p>
         <p>
           codeSTACKr
-          <a href="https://www.youtube.com/watch?v=-bwR9S5MmOI" target="_blank"
-            ><v-icon color="red">mdi-youtube</v-icon></a
-          >
+          <a href="https://www.youtube.com/watch?v=-bwR9S5MmOI" target="_blank">
+            <v-icon color="red">mdi-youtube</v-icon>
+          </a>
         </p>
         <p>Basic example</p>
       </div>
@@ -27,9 +27,9 @@
         <p>Before and After Pseudo Elements Easily Explained [CSS]</p>
         <p>
           codeSTACKr
-          <a href="https://youtu.be/-bwR9S5MmOI?t=761" target="_blank"
-            ><v-icon color="red">mdi-youtube</v-icon></a
-          >
+          <a href="https://youtu.be/-bwR9S5MmOI?t=761" target="_blank">
+            <v-icon color="red">mdi-youtube</v-icon>
+          </a>
         </p>
         <p>cool effect</p>
       </div>

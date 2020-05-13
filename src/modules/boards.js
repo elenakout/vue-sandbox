@@ -48,8 +48,8 @@ const actions = {
     ref
       .orderBy('date', 'desc')
       .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
+      .then(snapshot => {
+        snapshot.forEach(doc => {
           const board = {
             ...doc.data(),
             id: doc.id,

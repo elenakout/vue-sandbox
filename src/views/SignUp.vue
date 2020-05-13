@@ -1,48 +1,24 @@
 <template>
   <div class="signup">
-    <v-container
-      class="fill-height"
-      fluid
-      fill-height
-      >
-      <v-row
-        align="center"
-        justify="center"
-        >
-        <v-col
-          cols="12"
-          sm="8"
-          md="4"
-          >
+    <v-container class="fill-height" fluid fill-height>
+      <v-row align="center" justify="center">
+        <v-col cols="12" sm="8" md="4">
           <v-card class="elevation-12" :loading="loading">
-            <v-toolbar
-              color="blue-grey darken-3"
-              dark
-              flat
-              >
+            <v-toolbar color="blue-grey darken-3" dark flat>
               <v-toolbar-title>SignUp form</v-toolbar-title>
             </v-toolbar>
 
             <v-card-text>
-              <v-form
-                ref="form"
-                v-model="valid"
-                lazy-validation
-                >
+              <v-form ref="form" v-model="valid" lazy-validation>
                 <v-text-field
                   v-model="username"
                   :counter="10"
                   :rules="nameRules"
                   label="Username"
                   required
-                  ></v-text-field>
-
-                <v-text-field
-                  v-model="email"
-                  :rules="emailRules"
-                  label="Email"
-                  required
                 ></v-text-field>
+
+                <v-text-field v-model="email" :rules="emailRules" label="Email" required></v-text-field>
 
                 <v-text-field
                   v-model="password"
@@ -78,12 +54,7 @@
                   @click="onSubmit"
                 >Submit</v-btn>
 
-                <v-btn
-                  class="mt-4"
-                  color="white"
-                  @click="goBack"
-                >Cancel</v-btn>
-
+                <v-btn class="mt-4" color="white" @click="goBack">Cancel</v-btn>
               </v-form>
             </v-card-text>
           </v-card>
@@ -92,7 +63,6 @@
           <v-alert type="error" v-if="lfeedback">{{lfeedback}}</v-alert>
         </v-col>
       </v-row>
-
     </v-container>
   </div>
 </template>
@@ -101,7 +71,6 @@
 import { mapGetters, mapActions } from 'vuex';
 import slugify from 'slugify';
 // import db from '@/firebase/init';
-
 
 export default {
   name: 'signup',
@@ -128,7 +97,6 @@ export default {
       required: v => !!v || 'Password is required',
       min: v => v.length >= 6 || 'Min 6 characters',
       match: v => v === vm.password || 'Passwords must match',
-
     },
   }),
   computed: {
@@ -156,7 +124,12 @@ export default {
     onSubmit() {
       this.feedbackReset();
       this.loading = true;
-      if (this.username !== '' && this.email !== '' && this.password !== '' && this.rePassword !== '') {
+      if (
+        this.username !== '' &&
+        this.email !== '' &&
+        this.password !== '' &&
+        this.rePassword !== ''
+      ) {
         this.slug = slugify(this.username, {
           replacement: '-',
           remove: /[$_*+~.()'"!\-:@]/g,
@@ -179,13 +152,9 @@ export default {
       this.$refs.form.reset();
       this.$router.push({ name: 'home' });
     },
-
   },
-
 };
 </script>
 
 <style lang="scss" scoped>
-
-
 </style>

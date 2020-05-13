@@ -4,14 +4,13 @@
     <div v-if="getHomeTeam">
       <p>Venue: {{ getGameVenue }}</p>
       <p>Date: {{ dateForm }}</p>
-    <p>Home: {{ getHomeTeam.name }}</p>
-    <img :src="getHomeTeam.crestUrl" alt="crest" class="crest">
-    <p>Away: {{ getAwayTeam.name }}</p>
-    <img :src="getAwayTeam.crestUrl" alt="crest" class="crest">
+      <p>Home: {{ getHomeTeam.name }}</p>
+      <img :src="getHomeTeam.crestUrl" alt="crest" class="crest" />
+      <p>Away: {{ getAwayTeam.name }}</p>
+      <img :src="getAwayTeam.crestUrl" alt="crest" class="crest" />
 
-    <p>Info: {{ getGameInf }}</p>
+      <p>Info: {{ getGameInf }}</p>
     </div>
-
   </div>
 </template>
 
@@ -23,17 +22,24 @@ export default {
   data: () => ({
     //
     dialog: false,
-
   }),
   methods: {
     ...mapActions(['fetchNextGame']),
   },
   computed: {
-    ...mapGetters(['getMatchDate', 'getHomeTeam', 'getAwayTeam', 'getGameInf', 'getGameVenue']),
+    ...mapGetters([
+      'getMatchDate',
+      'getHomeTeam',
+      'getAwayTeam',
+      'getGameInf',
+      'getGameVenue',
+    ]),
     dateForm() {
       // return moment(this.getMatchDate).locale('el').calendar();
       // return moment(this.getMatchDate).locale('el').fromNow();
-      return moment(this.getMatchDate).locale('el').format('LLLL');
+      return moment(this.getMatchDate)
+        .locale('el')
+        .format('LLLL');
     },
   },
   created() {

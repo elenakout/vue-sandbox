@@ -14,10 +14,18 @@
         </button>
       </div>
       <ul class="navbar-links" v-bind:class="{ closed: isOpen }">
-        <li class="navbar-link"><router-link :to="{ path: 'projects' }">Home</router-link></li>
-        <li class="navbar-link"><router-link :to="{ path: 'projects' }">About</router-link></li>
-        <li class="navbar-link"><router-link :to="{ path: 'projects' }">Events</router-link></li>
-        <li class="navbar-link"><router-link :to="{ path: 'projects' }">Projects</router-link></li>
+        <li class="navbar-link">
+          <router-link :to="{ path: 'projects' }">Home</router-link>
+        </li>
+        <li class="navbar-link">
+          <router-link :to="{ path: 'projects' }">About</router-link>
+        </li>
+        <li class="navbar-link">
+          <router-link :to="{ path: 'projects' }">Events</router-link>
+        </li>
+        <li class="navbar-link">
+          <router-link :to="{ path: 'projects' }">Projects</router-link>
+        </li>
       </ul>
     </nav>
   </header>

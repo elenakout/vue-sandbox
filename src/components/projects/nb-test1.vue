@@ -5,11 +5,19 @@
         <div class="logo">
           <h4>Company Name</h4>
         </div>
-        <ul class="nav-links " v-bind:class="{ open: isOpen }">
-          <li><router-link class="nav-item" :to="{ path: 'projects' }">Home</router-link></li>
-          <li><a href="#" class="nav-item">Events</a></li>
-          <li><a href="#" class="nav-item">Projects</a></li>
-          <li><a href="#" class="nav-item">About</a></li>
+        <ul class="nav-links" v-bind:class="{ open: isOpen }">
+          <li>
+            <router-link class="nav-item" :to="{ path: 'projects' }">Home</router-link>
+          </li>
+          <li>
+            <a href="#" class="nav-item">Events</a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">Projects</a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">About</a>
+          </li>
         </ul>
         <div class="burger">
           <div class="menu-btn" v-bind:class="{ open: isOpen }" @click="isOpen = !isOpen">

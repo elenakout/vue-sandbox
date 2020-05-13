@@ -36,8 +36,8 @@
               />
             </td>
             <td>
-            <p>jksdjf</p>
-            {{ item.team.name }}
+              <p>jksdjf</p>
+              {{ item.team.name }}
             </td>
             <td>{{ item.playedGames }}</td>
             <td>{{ item.won }}</td>

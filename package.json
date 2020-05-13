@@ -19,6 +19,7 @@
     "vue-carousel": "^0.18.0",
     "vue-router": "^3.0.3",
     "vue-youtube": "^1.4.0",
+    "vue-youtube-embed": "^2.2.2",
     "vuelidate": "^0.7.4",
     "vuetify": "^2.1.11",
     "vuex": "^3.0.1"
@@ -51,7 +52,9 @@
       "@vue/airbnb"
     ],
     "rules": {
-      "arrow-parens": "off"
+      "arrow-parens": "off",
+      "operator-linebreak": "off",
+      "max-len": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
