@@ -1,19 +1,19 @@
 <template>
   <div class="team">
     <h1 class="display-2 mb-6">team</h1>
-    <editor />
+    <!-- <editor /> -->
     <carousel />
   </div>
 </template>
 
 <script>
-import Editor from '@/components/team/editor.vue';
+// import Editor from '@/components/team/editor.vue';
 import Carousel from '@/components/team/carousel.vue';
 
 export default {
   name: 'team',
   components: {
-    Editor,
+    // Editor,
     Carousel,
   },
 };

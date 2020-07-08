@@ -1,6 +1,12 @@
 <template>
   <div class="carousel">
-    <v-carousel cycle="true" hide-delimiter-background="true" height="85vh">
+    <v-carousel
+      cycle="true"
+      hide-delimiter-background="true"
+      height="85vh"
+      interval="8000"
+      dark="true"
+    >
       <v-carousel-item
         v-for="item in slides"
         :key="item.id"
