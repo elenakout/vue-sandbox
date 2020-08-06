@@ -29,6 +29,7 @@ export default {
 
 <style scoped lang="scss">
 .info-card {
+  width: 250px;
   background-color: #fff;
   font-weight: 100;
   min-height: 128px;

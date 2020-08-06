@@ -82,8 +82,7 @@ export default {
   transform: rotateY(-180deg);
 }
 
-.flip-container:hover .back,
-.flip-container.hover .back {
+.flip-container:hover .back {
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
   -o-transform: rotateY(0deg);
@@ -91,8 +90,7 @@ export default {
   transform: rotateY(0deg);
 }
 
-.flip-container:hover .front,
-.flip-container.hover .front {
+.flip-container:hover .front {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
