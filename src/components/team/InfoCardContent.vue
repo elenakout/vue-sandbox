@@ -1,6 +1,7 @@
 <template>
   <div class="info-card oval-corners with-shadow p-8 text-grey">
     <div class="title grey-background oval-corners p-l-4">{{ title }}</div>
+    <img :src="imgUrl" alt />
     <div class="body">
       <p v-html="data"></p>
     </div>
@@ -19,6 +20,10 @@ export default {
       type: String,
       default: 'Default Data',
     },
+    imgUrl: {
+      type: String,
+
+    },
   },
 
   data: () => ({}),
@@ -28,6 +33,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+img {
+  width: 100%;
+}
 .info-card {
   width: 250px;
   background-color: #fff;
