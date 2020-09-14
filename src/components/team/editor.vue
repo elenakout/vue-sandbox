@@ -1,17 +1,10 @@
 <template>
-  <div class="editor">
-    <vue-editor v-model="content" />
-    <h1 class="mt-10">Preview</h1>
-    <p>{{ content }}</p>
-    <p v-html="content"></p>
-  </div>
+  <div class="editor"></div>
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor';
-
 export default {
-  components: { VueEditor },
+  components: {},
   data: () => ({
     content: '<p>Some initial content</p>',
   }),
