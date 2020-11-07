@@ -10,8 +10,6 @@ import Admin from './views/Admin.vue';
 import DesignSys from './views/DesignSys.vue';
 import ImageDashboard from './views/ImageDashboard.vue';
 
-import Timeline from './views/Timeline.vue';
-
 import store from './store';
 
 Vue.use(Router);
@@ -86,12 +84,6 @@ export default new Router({
       path: '/designsys',
       name: 'designsys',
       component: DesignSys,
-    },
-
-    {
-      path: '/timeline',
-      name: 'timeline',
-      component: Timeline,
     },
     {
       path: '/imagedashboard',
