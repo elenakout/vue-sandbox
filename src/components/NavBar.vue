@@ -17,9 +17,13 @@
             <v-img src="https://i.imgur.com/mDSKItg.png"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="title">{{ activeuser.username }}</v-list-item-title>
+            <v-list-item-title class="title">{{
+              activeuser.username
+            }}</v-list-item-title>
             <v-list-item-subtitle>{{ activeuser.email }}</v-list-item-subtitle>
-            <v-list-item-subtitle v-if="activeuser.isAdmin">Admin</v-list-item-subtitle>
+            <v-list-item-subtitle v-if="activeuser.isAdmin"
+              >Admin</v-list-item-subtitle
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -35,7 +39,12 @@
             </v-list-item-content>
           </v-list-item>
 
-          <v-list-item v-for="(item, index) in drawerItems" :key="index" router :to="item.route">
+          <v-list-item
+            v-for="(item, index) in drawerItems"
+            :key="index"
+            router
+            :to="item.route"
+          >
             <v-list-item-icon>
               <v-icon v-text="item.icon"></v-icon>
             </v-list-item-icon>
@@ -49,7 +58,10 @@
 
     <v-app-bar app clipped-left dark color="blue-grey darken-4">
       <!-- eslint-disable-next-line max-len -->
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="this.activeuser"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        v-if="this.activeuser"
+      ></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-toolbar-title router to="/">
         <span class="font-weight-light">GetShit</span>
@@ -85,6 +97,11 @@ export default {
         { icon: 'mdi-star', title: 'DesignSystem', route: '/designsys' },
 
         { icon: 'mdi-timeline-outline', title: 'Timeline', route: '/timeline' },
+        {
+          icon: 'mdi-monitor-dashboard',
+          title: 'ImageDashboard',
+          route: '/imagedashboard',
+        },
       ],
     };
   },

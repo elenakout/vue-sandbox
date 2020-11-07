@@ -8,6 +8,7 @@ import Team from './views/Team.vue';
 import SignUp from './views/SignUp.vue';
 import Admin from './views/Admin.vue';
 import DesignSys from './views/DesignSys.vue';
+import ImageDashboard from './views/ImageDashboard.vue';
 
 import Timeline from './views/Timeline.vue';
 
@@ -91,6 +92,11 @@ export default new Router({
       path: '/timeline',
       name: 'timeline',
       component: Timeline,
+    },
+    {
+      path: '/imagedashboard',
+      name: 'imagedashboard',
+      component: ImageDashboard,
     },
   ],
 });
