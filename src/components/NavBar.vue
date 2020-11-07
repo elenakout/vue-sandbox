@@ -95,8 +95,6 @@ export default {
         { icon: 'mdi-folder', title: 'My Projects', route: '/projects' },
         { icon: 'mdi-account', title: 'Team', route: '/team' },
         { icon: 'mdi-star', title: 'DesignSystem', route: '/designsys' },
-
-        { icon: 'mdi-timeline-outline', title: 'Timeline', route: '/timeline' },
         {
           icon: 'mdi-monitor-dashboard',
           title: 'ImageDashboard',

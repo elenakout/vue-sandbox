@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <nav-bar />
-    <v-content class="fill-height">
+    <v-main class="fill-height">
       <router-view />
-    </v-content>
+    </v-main>
 
     <v-footer>
       <v-spacer></v-spacer>

@@ -31,7 +31,7 @@ export default {
   border: 1px solid rgb(48, 48, 199);
   border-radius: 8px;
 
-  &__icon {
+  i {
     cursor: pointer;
     color: rgb(48, 48, 199);
     font-size: 40px;

@@ -1,14 +1,7 @@
 import Vue from 'vue';
-import Vuelidate from 'vuelidate';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import VueTimeline from '@growthbunker/vuetimeline';
 import axios from 'axios';
-import wysiwyg from 'vue-wysiwyg';
-
-
-// import VueYoutube from 'vue-youtube';
-
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -16,17 +9,9 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 import db from '@/firebase/init';
 
-Vue.use(Vuelidate);
+
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
-
-
-Vue.use(wysiwyg, {}); // config is optional. more below
-
-Vue.use(VueTimeline, {
-  // Specify the theme to use: dark or light (dark by default).
-  theme: 'dark',
-});
 
 let app;
 

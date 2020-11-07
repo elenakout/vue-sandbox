@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <h1 class="title">Image Upload dashboard</h1>
+    <h1 class="titl display-1">Image Upload dashboard</h1>
     <add-image></add-image>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.title {
+.titl {
   margin-bottom: 24px;
 }
 </style>
