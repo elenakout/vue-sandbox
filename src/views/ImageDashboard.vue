@@ -1,17 +1,21 @@
 <template>
   <div class="dashboard">
-    <h1 class="titl display-1">Image Upload dashboard</h1>
+    <h2 class="text-h2">Send Email Template</h2>
+    <send-email-form></send-email-form>
+    <h1 class="titl display-1 mt-7">Image Upload dashboard</h1>
     <add-image></add-image>
   </div>
 </template>
 
 <script>
 import AddImage from '@/components/imagedashboard/AddImage.vue';
+import SendEmailForm from '@/components/imagedashboard/SendEmailForm.vue';
 
 export default {
   name: 'ImageDashboard',
   components: {
     AddImage,
+    SendEmailForm,
   },
   data() {
     return {};
@@ -23,7 +27,7 @@ export default {
 <style scoped lang="scss">
 .dashboard {
   width: 100%;
-  height: 80vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
