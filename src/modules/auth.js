@@ -2,37 +2,37 @@ import firebase from 'firebase/app';
 import moment from 'moment';
 import db from '@/firebase/init';
 
-const sendEmail = async (payload) => {
-  try {
-    // SEND EMAIL
-    const maildata = {
-      service_id: process.env.VUE_APP_SERVICE_ID,
-      template_id: process.env.VUE_APP_TEMPLATE_ID,
-      user_id: process.env.VUE_APP_USER_ID,
-      template_params: {
-        username: payload.username,
-        message: 'new user signed up',
-        from_name: payload.email,
-        date: payload.date,
-      },
-    };
+// const sendEmail = async (payload) => {
+//   try {
+//     // SEND EMAIL
+//     const maildata = {
+//       service_id: process.env.VUE_APP_SERVICE_ID,
+//       template_id: process.env.VUE_APP_TEMPLATE_ID,
+//       user_id: process.env.VUE_APP_USER_ID,
+//       template_params: {
+//         username: payload.username,
+//         message: 'new user signed up',
+//         from_name: payload.email,
+//         date: payload.date,
+//       },
+//     };
 
-    const response = await fetch(
-      'https://api.emailjs.com/api/v1.0/email/send',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(maildata),
-      },
-    );
+//     const response = await fetch(
+//       'https://api.emailjs.com/api/v1.0/email/send',
+//       {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(maildata),
+//       },
+//     );
 
-    const res = await response;
+//     const res = await response;
 
-    console.log(res.ok);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     console.log(res.ok);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 const data = {
   user: null,
@@ -92,7 +92,7 @@ const actions = {
 
         ref.set(newUser);
         commit('setUser', newUser);
-        sendEmail(newUser);
+        // sendEmail(newUser);
       })
       .catch(err => {
         commit('setFeedback', err.message);

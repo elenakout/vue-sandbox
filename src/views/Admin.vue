@@ -21,7 +21,8 @@
 
         <template v-slot:item.action="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)">edit</v-icon>
-          <v-icon small @click="deleteItem(item)">delete</v-icon>
+          <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
+          <v-icon small @click="sendemail(item)">mdi-email</v-icon>
         </template>
       </v-data-table>
     </v-card>
@@ -54,8 +55,46 @@ export default {
     editItem(item) {
       console.log(item);
     },
-    deleteItem(item) {
+    async deleteItem(item) {
+      // 7487b140-444e-11eb-aa5e-47990eb5b682
+      // https://app.zipcodebase.com/api/v1/search?apikey=7487b140-444e-11eb-aa5e-47990eb5b682&codes=63074&country=GR
+      try {
+        const resp = await fetch('https://app.zipcodebase.com/api/v1/search?apikey=7487b140-444e-11eb-aa5e-47990eb5b682&codes=63074&country=GR', {
+          method: 'GET',
+        });
+        const result = await resp.json();
+        const keys = result.results;
+        const tk = keys[Object.keys(keys)[0]];
+        console.log(tk[0].city);
+      } catch (err) {
+        console.log(err);
+      }
       console.log(item);
+    },
+    async sendemail(item) {
+      const maildata = {
+        username: item.username,
+        email: item.email,
+        isAdmin: item.isAdmin,
+        userId: item.userId,
+        date: item.date,
+      };
+
+      const response = await fetch('http://localhost:5000/api/v1/send-email',
+        {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type, x-requested-with',
+          },
+          body: JSON.stringify(maildata),
+        });
+
+      const res = await response;
+
+      const returndata = await res.json();
+
+      console.log(returndata);
     },
   },
   computed: {
