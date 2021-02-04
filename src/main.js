@@ -2,6 +2,7 @@ import Vue from 'vue';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import axios from 'axios';
+import * as VueGoogleMaps from 'vue2-google-maps';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -12,6 +13,13 @@ import db from '@/firebase/init';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_API,
+    language: 'el',
+  },
+});
 
 let app;
 
